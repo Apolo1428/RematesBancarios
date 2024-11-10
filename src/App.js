@@ -5,9 +5,8 @@ import Principal from './Pages/Principal';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 import './App.css';
+// Actualizacion
 
-
-/// hola nuevo mensaje
 
 const App = () => {
     const [isLogin, setisLogin] = useState("");
