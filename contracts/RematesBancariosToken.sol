@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18;
+pragma solidity ^0.8.27;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
-abstract contract RealEstateToken is ERC20, Ownable {
-    uint256 public constant TOKEN_PRICE = 1 * 10 ** 6; // Precio de 100 USDC por token
+contract RematesBancariosToken is ERC20, Ownable {
+    uint256 public constant TOKEN_PRICE = 1 * 10 ** 3; // Precio de 1 USDC por token
     uint256 public constant ANNUAL_YIELD = 15; // 15% de rendimiento anual.
     uint256 public constant TOTAL_TOKENS = 2543 * 10 ** 18; // Número total de tokens
 
@@ -18,8 +18,9 @@ abstract contract RealEstateToken is ERC20, Ownable {
     // Array para almacenar los inversores
     address[] public investors;
 
-    constructor() ERC20("RealEstateToken", "RET")  Ownable(msg.sender) {
-        _mint( address(this), TOTAL_TOKENS); 
+    constructor() ERC20("RematesBancariosToken", "RBT") Ownable(msg.sender) {
+        //console.log(msg.sender);
+        _mint(msg.sender, TOTAL_TOKENS);
     }
     function setUsdcTokenAddress(address _usdcTokenAddress) external onlyOwner {
         usdcTokenAddress = _usdcTokenAddress;
@@ -69,15 +70,12 @@ abstract contract RealEstateToken is ERC20, Ownable {
         // Transferir USDC al contrato desde el comprador
         IERC20(usdcTokenAddress).transferFrom(msg.sender, address(this), cost);
 
-        // Transferir tokens RET al comprador
+        // Transferir tokens RBT al comprador
         _transfer(owner(), msg.sender, tokenAmount);
 
         // Actualizar balance del inversor
         balances[msg.sender] += tokenAmount;
         investors.push(msg.sender);
-    }
-    function balanceOf(address account) public view virtual override returns (uint256) {
-        return balances[account];
     }
 
 }
