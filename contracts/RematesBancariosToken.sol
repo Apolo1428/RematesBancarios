@@ -7,9 +7,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
 contract RematesBancariosToken is ERC20, Ownable {
-    uint256 public constant TOKEN_PRICE = 1 * 10 ** 3; // Precio de 1 USDC por token
+    uint256 public constant TOKEN_PRICE = 1; // Precio de 1 USDC por token
     uint256 public constant ANNUAL_YIELD = 15; // 15% de rendimiento anual.
-    uint256 public constant TOTAL_TOKENS = 2543 * 10 ** 18; // Número total de tokens
+    uint256 public constant TOTAL_TOKENS = 2543 * 10 ** 6; // Número total de tokens: 2543 000 000
 
     address public usdcTokenAddress =
         0x5FbDB2315678afecb367f032d93F642f64180aa3; // Dirección de USDC proporcionada
@@ -35,7 +35,7 @@ contract RematesBancariosToken is ERC20, Ownable {
             uint256 investorTokens = balances[investor];
             uint256 yield = (investorTokens * ANNUAL_YIELD) / 100; // Calcular el 15% de rendimiento
 
-            uint256 usdcYield = (yield * TOKEN_PRICE) / (10 ** 18); // Calcular el rendimiento en USDC
+            uint256 usdcYield = yield * TOKEN_PRICE; // Calcular el rendimiento en USDC
 
             // Transferir USDC al inversor
             IERC20(usdcTokenAddress).transfer(investor, usdcYield);
@@ -48,7 +48,7 @@ contract RematesBancariosToken is ERC20, Ownable {
         require(investorTokens > 0, "No tokens owned");
 
         uint256 yield = (investorTokens * ANNUAL_YIELD) / 100;
-        uint256 usdcYield = (yield * TOKEN_PRICE) / (10 ** 18);
+        uint256 usdcYield = yield * TOKEN_PRICE ;
 
         // Transferir USDC al inversor
         IERC20(usdcTokenAddress).transfer(msg.sender, usdcYield);
@@ -56,6 +56,8 @@ contract RematesBancariosToken is ERC20, Ownable {
     function getUsdcTokenAddress() public view returns (address) {
         return usdcTokenAddress;
     }
+
+    // Función para que los inversores compren tokens RBT 
     function buyTokens(uint256 tokenAmount) external {
         uint256 cost = tokenAmount * TOKEN_PRICE;
         require(

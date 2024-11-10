@@ -229,8 +229,8 @@
       ]
     },
     "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\contracts\\RematesBancariosToken.sol": {
-      "lastModificationDate": 1731266639699,
-      "contentHash": "a911e50fd6a093b387e5bd6d7470db6f",
+      "lastModificationDate": 1731270419224,
+      "contentHash": "169cc034951118e346fe013da996a741",
       "sourceName": "contracts/RematesBancariosToken.sol",
       "solcConfig": {
         "version": "0.8.27",
