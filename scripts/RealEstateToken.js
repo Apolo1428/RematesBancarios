@@ -2,9 +2,8 @@ const hre = require("hardhat");
 
 async function main() {
   const RealEstatToken = await hre.ethers.getContractFactory("RealEstateTokenImplementation");
-  const realEstatToken = await Greeter.deploy();
+  const realEstatToken = await RealEstatToken.deploy();
 
-  await realEstatToken.deployed();
 
   console.log("Greeter deployed to:", realEstatToken.address);
 }
