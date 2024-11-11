@@ -7,9 +7,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
 contract RematesBancariosToken is ERC20, Ownable {
-    uint256 public constant TOKEN_PRICE = 1; // Precio de 1 USDC por token
+    uint256 public constant TOKEN_PRICE = 1 * 10 ** 18; // Precio de 1 USDC por token
     uint256 public constant ANNUAL_YIELD = 15; // 15% de rendimiento anual.
-    uint256 public constant TOTAL_TOKENS = 2543 * 10 ** 6; // Número total de tokens: 2543 000 000
+    uint256 public constant TOTAL_TOKENS = 2543 * 10 ** 18; // Número total de tokens: 2543
 
     address public usdcTokenAddress =
         0x5FbDB2315678afecb367f032d93F642f64180aa3; // Dirección de USDC proporcionada
@@ -33,7 +33,7 @@ contract RematesBancariosToken is ERC20, Ownable {
         for (uint256 i = 0; i < investors.length; i++) {
             address investor = investors[i];
             uint256 investorTokens = balances[investor];
-            uint256 yield = (investorTokens * ANNUAL_YIELD) / 100; // Calcular el 15% de rendimiento
+            uint256 yield = (investorTokens * ANNUAL_YIELD) / (100 * 10 **18); // Calcular el 15% de rendimiento
 
             uint256 usdcYield = yield * TOKEN_PRICE; // Calcular el rendimiento en USDC
 

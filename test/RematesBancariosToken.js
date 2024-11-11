@@ -20,7 +20,7 @@ describe("Verificación de funcionamiento del contrato RematesBancariosToken", f
         await rematesBancariosToken.connect(owner).setUsdcTokenAddress(mockUSDC.target);
 
         // Transferir algunos tokens USDC al inversor para que tenga USDC en su bolcillo
-        await mockUSDC.transfer(investor.address, ethers.parseUnits('1000', 6)); // 1000 USDC en formato de 6 decimales
+        await mockUSDC.transfer(investor.address, ethers.parseUnits('1000', 18)); // 1000 USDC en formato de 6 decimales
 
     });
 
@@ -28,7 +28,7 @@ describe("Verificación de funcionamiento del contrato RematesBancariosToken", f
         // Aprobar el contrato para usar los tokens USDC del inversor
         await mockUSDC.connect(investor).approve(
             rematesBancariosToken.target,
-            ethers.parseUnits('1000', 6)
+            ethers.parseUnits('1000', 18)
         );
         
         // Verificar que el inversor tenga USDC de prueba, y el Owner tenga RBT
@@ -41,7 +41,7 @@ describe("Verificación de funcionamiento del contrato RematesBancariosToken", f
 
         // Tokens RBT a comprar
 
-        const RBTcomprar = ethers.parseUnits("4", 2); // comprar 400 tokens
+        const RBTcomprar = ethers.parseUnits("4",2); // comprar 400 tokens
         console.log("El inversor compra ", RBTcomprar.toString(), "RBT al comprador");
         const precio = 1 * 400;
         console.log("Por un precio de ", precio.toString(), " USDC."); // habíamos fijado que cada token vale 1 USDC.
@@ -61,7 +61,7 @@ describe("Verificación de funcionamiento del contrato RematesBancariosToken", f
     });
     it("Un inversor debería reclamar su rendimiento ", async function () {
         // Simular la compra de tokens para el inversor
-        await mockUSDC.connect(investor).approve(rematesBancariosToken.target, ethers.parseUnits("1000", 6));
+        await mockUSDC.connect(investor).approve(rematesBancariosToken.target, ethers.parseUnits("1000", 18));
 
         const RBTcomprar = ethers.parseUnits("2", 2); // comprar 200 tokens
         await rematesBancariosToken.connect(investor).buyTokens(RBTcomprar); 
@@ -78,7 +78,7 @@ describe("Verificación de funcionamiento del contrato RematesBancariosToken", f
         await rematesBancariosToken.connect(investor).claimYield();
     
         // Calcular el rendimiento esperado
-        const expectedYield = RBTcomprar*15n/100n;
+        const expectedYield = RBTcomprar*15n/100n*ethers.parseUnits("1", 18);;
 
         // Verificar que el inversor recibió el rendimiento en USDC
         const investorUsdcBalance = await mockUSDC.balanceOf(investor.address);
@@ -89,16 +89,16 @@ describe("Verificación de funcionamiento del contrato RematesBancariosToken", f
     });
     it("Debería distribuir a todos los inversores", async function () {
         // Simular la compra de tokens por parte de dos inversores
-        await mockUSDC.connect(investor).approve(rematesBancariosToken.target, ethers.parseUnits("1000", 6));
+        await mockUSDC.connect(investor).approve(rematesBancariosToken.target, ethers.parseUnits("1000", 18));
 
         const RBTcomprar1 = ethers.parseUnits("2", 2); // comprar 200 tokens RBT
         await rematesBancariosToken.connect(investor).buyTokens(RBTcomprar1); 
     
         const investor2 = (await ethers.getSigners())[2];
         // Darle dinero al inversor de antemano para que pueda comprar
-        await mockUSDC.transfer(investor2.address, ethers.parseUnits('1000', 6));
+        await mockUSDC.transfer(investor2.address, ethers.parseUnits('1000', 18));
         const RBTcomprar2 = ethers.parseUnits("3", 2); // comprar 300 tokens RBT
-        await mockUSDC.connect(investor2).approve(rematesBancariosToken.target, ethers.parseUnits("1000", 6));
+        await mockUSDC.connect(investor2).approve(rematesBancariosToken.target, ethers.parseUnits("1000", 18));
         await rematesBancariosToken.connect(investor2).buyTokens(RBTcomprar2);
         
         // Obtener lo que tienen nuestros inversores:
@@ -109,8 +109,8 @@ describe("Verificación de funcionamiento del contrato RematesBancariosToken", f
         await rematesBancariosToken.connect(owner).distributeAnnualYield();
     
         // Calcular el rendimiento esperado para cada inversor
-        const expectedYieldInvestor1 = RBTcomprar1*15n/100n;
-        const expectedYieldInvestor2 = RBTcomprar2*15n/100n;
+        const expectedYieldInvestor1 = RBTcomprar1*15n/100n*ethers.parseUnits("1", 18);
+        const expectedYieldInvestor2 = RBTcomprar2*15n/100n*ethers.parseUnits("1", 18);;
     
         // Verificar que los inversores recibieron el rendimiento en USDC
         const investor1UsdcBalance = await mockUSDC.balanceOf(investor.address);

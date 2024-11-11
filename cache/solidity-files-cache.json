@@ -1,9 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\contracts\\MockUSDC.sol": {
-      "lastModificationDate": 1731265023043,
-      "contentHash": "1fa449402ca15537833b9b226b3b8d52",
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\contracts\\MockUSDC.sol": {
+      "lastModificationDate": 1731361678149,
+      "contentHash": "b649f40b5c8bc00f210996fcdf6cde36",
       "sourceName": "contracts/MockUSDC.sol",
       "solcConfig": {
         "version": "0.8.27",
@@ -39,7 +39,7 @@
         "MockUSDC"
       ]
     },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\ERC20.sol": {
       "lastModificationDate": 1730759224838,
       "contentHash": "38910c3dfa5e3778fac8888b1d714084",
       "sourceName": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
@@ -80,7 +80,7 @@
         "ERC20"
       ]
     },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\IERC20.sol": {
       "lastModificationDate": 1730759224899,
       "contentHash": "8f19f64d2adadf448840908bbaf431c8",
       "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
@@ -116,7 +116,43 @@
         "IERC20"
       ]
     },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\interfaces\\draft-IERC6093.sol": {
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+      "lastModificationDate": 1730759224803,
+      "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.27",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "Context"
+      ]
+    },
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\interfaces\\draft-IERC6093.sol": {
       "lastModificationDate": 1730759224811,
       "contentHash": "267d92fe4de67b1bdb3302c08f387dbf",
       "sourceName": "@openzeppelin/contracts/interfaces/draft-IERC6093.sol",
@@ -154,43 +190,7 @@
         "IERC721Errors"
       ]
     },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
-      "lastModificationDate": 1730759224803,
-      "contentHash": "67bfbc07588eb8683b3fd8f6f909563e",
-      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
-      "solcConfig": {
-        "version": "0.8.27",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.20"
-      ],
-      "artifacts": [
-        "Context"
-      ]
-    },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Metadata.sol": {
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\token\\ERC20\\extensions\\IERC20Metadata.sol": {
       "lastModificationDate": 1730759224901,
       "contentHash": "794db3115001aa372c79326fcfd44b1f",
       "sourceName": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
@@ -228,9 +228,9 @@
         "IERC20Metadata"
       ]
     },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\contracts\\RematesBancariosToken.sol": {
-      "lastModificationDate": 1731270419224,
-      "contentHash": "169cc034951118e346fe013da996a741",
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\contracts\\RematesBancariosToken.sol": {
+      "lastModificationDate": 1731361534545,
+      "contentHash": "bea44a8a9e612157e161bcef020e7c01",
       "sourceName": "contracts/RematesBancariosToken.sol",
       "solcConfig": {
         "version": "0.8.27",
@@ -269,7 +269,7 @@
         "RematesBancariosToken"
       ]
     },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\node_modules\\hardhat\\console.sol": {
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\node_modules\\hardhat\\console.sol": {
       "lastModificationDate": 1730737249980,
       "contentHash": "681c532e816169606d13a5fe8b475074",
       "sourceName": "hardhat/console.sol",
@@ -305,7 +305,7 @@
         "console"
       ]
     },
-    "C:\\Users\\cgcab\\yo\\ProyectoPlataforma\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
+    "C:\\Users\\cgcab\\yo\\ProyectosBlockChain\\plataformaRemates\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
       "lastModificationDate": 1730759224934,
       "contentHash": "d3c790edc9ccf808a17c5a6cd13614fd",
       "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
