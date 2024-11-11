@@ -33,7 +33,7 @@ contract RematesBancariosToken is ERC20, Ownable {
         for (uint256 i = 0; i < investors.length; i++) {
             address investor = investors[i];
             uint256 investorTokens = balances[investor];
-            uint256 yield = (investorTokens * ANNUAL_YIELD) / (100 * 10 **18); // Calcular el 15% de rendimiento
+            uint256 yield = (investorTokens * ANNUAL_YIELD) / 100; // Calcular el 15% de rendimiento
 
             uint256 usdcYield = yield * TOKEN_PRICE; // Calcular el rendimiento en USDC
 
