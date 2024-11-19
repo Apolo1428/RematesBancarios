@@ -15,7 +15,7 @@ const Ingreso = () => {
     };
   return (
     <div className='login-wrapper'>
-        <img src = {require('../logo192.png')}></img>
+        <img src = {require('../logoRBT.png')} style={{width:'150px', margin: '20px'}}></img>
 
         <div className="login-container">
         <h2>Iniciar Sesión</h2>
@@ -27,6 +27,7 @@ const Ingreso = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 placeholder='Nombre usuario'
+                autoComplete='off'
             />
             </div>
             <div className="form-group">
@@ -36,12 +37,13 @@ const Ingreso = () => {
                 placeholder='Contraseña'
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                autoComplete='off'
             />
             </div>
             <button type="submit">Iniciar Sesión</button>
             
         </form>
-        <p>¿No tienes cuenta?</p>
+        <p style = {{marginTop: "12px"}}>¿No tienes cuenta?</p>
         <button onClick={goToRegister} className="RegisterBtn">Registrarse</button>
        
         </div>

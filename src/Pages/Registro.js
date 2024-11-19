@@ -20,7 +20,7 @@ const Registro = () => {
 
     return (
         <div className="register-wrapper">
-            <img src = {require('../logo192.png')}></img>
+            <img src = {require('../logoRBT.png')}></img>
         <div className="register-container">
             <h2>Registrarse</h2>
             <form onSubmit={handleSubmit}>

@@ -26,6 +26,7 @@ const ProgramarPago = () => {
                 value={empresa}
                 onChange={(e) => setEmpresa(e.target.value)}
                 required
+                autoComplete='off'
             />
             <br></br>
             <input
@@ -34,6 +35,7 @@ const ProgramarPago = () => {
                 value={monto}
                 onChange={(e) => setMonto(e.target.value)}
                 required
+                autoComplete='off'
             />
             <br></br>
             <input
@@ -41,6 +43,7 @@ const ProgramarPago = () => {
                 value={fecha}
                 onChange={(e) => setFecha(e.target.value)}
                 required
+                autoComplete='off'
             />
             <br></br>
             <button type="submit">Efectuar Token</button>

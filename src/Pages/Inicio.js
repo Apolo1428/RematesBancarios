@@ -7,8 +7,10 @@ const Inicio = () => {
     return (
     <div class="container" className='contenedor2'>
         <div class="header">
-            <h1>Tokenización de Bienes Inmuebles</h1>
+            <h1>Tokenización de inmuebles</h1>
+            <h1>Rapido y seguro</h1>
             <p>Invierte en bienes inmuebles de manera accesible, segura y digital.</p>
+            <button>Empieza a invertir</button>
         </div>
         
         <div class="features">
@@ -25,8 +27,24 @@ const Inicio = () => {
                 <p>Obtén ingresos pasivos con el potencial de crecimiento en el valor de tus tokens, respaldados por bienes reales.</p>
             </div>
         </div>
-        
-        <button class="cta-button">Empieza a Invertir</button>
+        <div class = 'flex'>
+            <div className = "title">Ofrecemos</div>
+            <div className="features2">
+                <div class="feature-box2">
+                    <h3>Tokenización de bienes inmuebles</h3>
+                    <p>Puedes poner a la venta los bienes indicando su precio y cantidad de tokens a dividir.</p>
+                </div>
+                <div class="feature-box2">
+                    <h3>Compra de tokens</h3>
+                    <p>Puedes comprar los tokens del catálogo de bienes, recibiendo ganancias anuales de hasta el 15% por cada token. <br/>¡A más tokens más ganancias!</p>
+                </div>
+                <div class="feature-box2">
+                    <h3>Cobro de rendimiento</h3>
+                    <p>Reclama tus ganancias manualmente desde la plataforma.</p>
+                </div>
+            </div>
+            
+        </div>
     </div>
     );
 };

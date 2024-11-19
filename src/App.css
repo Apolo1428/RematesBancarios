@@ -9,20 +9,19 @@
   padding: 0;
 }
 #contenedor{
-  padding: 3rem 3rem;
 
-  height: 100vh;
-  background-color: #17004e;
+  background-color: #000000;
   color: rgb(198, 198, 198);
 }
 
 .navbar {
-  background-color: #0c0027;
+
+  background-color: #000000;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   box-shadow: 2px 2px 10px #23006f;
+
 }
 
 .formCustom {
@@ -39,11 +38,12 @@
 .navbar ul {
   list-style: none;
   display: flex;
-  margin: 0;
+  justify-content: right;
 }
 
 .navbar ul li {
   margin-right: 10px;
+  align-content: center;
 }
 
 .navbar ul li a {
@@ -53,9 +53,8 @@
   font-size: 1.2rem;
   padding:10px;
   margin-left: 20px;
-  margin-top: 10px;
   width: 200px;
-  background-color: #0c0027;
+  background-color: #000000;
   border: 2px solid #0978d8;
   border-radius: 30px;
 }
@@ -65,18 +64,26 @@
   background-color: #150046;
   box-shadow: 3px 3px 20px #23006f;
 }
+.navbar h1{
+  text-align: center;
+  font-family: sans-serif;
+  font-style: italic;
+  background: -webkit-linear-gradient(left, #00d0ff, #470ce9, #b926f8c3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 10px;
+}
 
 
 .login-wrapper, .register-wrapper{
   height:700px;
-  background-color: #0c0027;
+  background-color: #09001e;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
   align-items: center;
   justify-items: center;
   h3{
-    background-image: url('logo192.png');
     padding-bottom:40px;
   }
   h2 {
@@ -145,7 +152,7 @@ input {
   border-radius: 30px;
   border: 2px solid #0978d8;
 }
-input:hover, button:hover{
+input:hover{
   background-color: #1f1f1f;
 }
 .programarpagos{
@@ -165,25 +172,8 @@ label {
   margin-bottom: 5px;
   font-weight: bold;
 }
-button {
-
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-}
-
-button:hover {
-  background-color: #45a049;
-}
 
 
-p {
-  margin-top: 10px;
-}
 
 .link {
   color: blue;
@@ -246,8 +236,8 @@ p {
 
 
 .contenedor2{
-  /* Estilos generales */
-  * {
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -276,35 +266,40 @@ body {
 
 /* Header */
 .header {
-    margin-bottom: 2rem;
+  padding-top:130px;
+  justify-items: center;
+  height: 600px;
+  margin-bottom: 2rem;
+  background-image: url("background.png");
+  background-size: 100vw;
 }
 
 .header h1 {
-    font-size: 2.5rem;
-    color: #1a73e8;
+    font-size: 4rem;
+    color: #7b04dc;
     font-weight: bold;
 }
 
 .header p {
-    font-size: 1rem;
-    color: #666;
-    margin-top: 0.5rem;
+    font-size: 21px;
+    color: #ffffff;
+    margin-top: 3rem;
 }
 
 /* Sección de tokenización */
 .features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 3rem 0;
+  padding: 0px 80px 0px 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 3rem 0;
 }
 
 .feature-box {
-    flex: 1 1 1px;
     max-width: 400px;
-    background-color: #f9fafb;
-    padding: 20px;
+    background-color: #051b31;
+    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -316,31 +311,68 @@ body {
 }
 
 .feature-box h3 {
-    font-size: 1.2rem;
-    color: #1a73e8;
-    margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  color: #4797ff;
+  margin-bottom: 0.5rem;
 }
 
 .feature-box p {
-    font-size: 0.95rem;
-    color: #666;
+    text-align: justify;
+    font-size: 1.1rem;
+    color: rgb(235, 235, 235);
     line-height: 1.6;
 }
 
-/* Botón */
-.cta-button {
-    margin-top: 2rem;
-    background-color: #1a73e8;
-    color: #fff;
-    padding: 15px 30px;
-    font-size: 1rem;
-    border: none;
+.flex {
+  margin-top:90px;
+  display: flex;
+  .title{
+    padding-left:200px;
+    padding-top:250px;
+    font-size: 50px;
+    width: 50vw;
+  }
+  .feature2{
+    justify-items: center;
+  }
+  .feature-box2 {
+    margin-bottom:20px;
+    max-width: 630px;
+    padding: 30px;
     border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    h3{
+      font-size: 36px;
+      margin-bottom: 25px;
+      background: -webkit-linear-gradient(left, #00d0ff, #470ce9, #b926f8c3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p{
+      line-height: 30px;
+      font-size: 20px;
+    }
+  }
 }
 
-.cta-button:hover {
-    background-color: #1558b2;
+
+/* Botón */
+button {
+  margin-top: 2.5rem;
+  color: #fff;
+  padding: 20px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #014dff;
+
+}
+
+button:hover {
+  background: -webkit-linear-gradient(top left, #9d00ff, #470ce9, #027ac0);
+    
 }
 }

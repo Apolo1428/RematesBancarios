@@ -16,10 +16,12 @@ const App = () => {
           <div> 
                 <div>
                 <Routes>
-                        <Route path="/" element={<Navigate to="/Ingreso" replace />} />
+                        <Route path="/" element={<Navigate to="/Principal" replace />} />
                         <Route path="/Ingreso" element={<Ingreso />} />
                         <Route path="/Registro" element={<Registro/>} />
                         <Route path="/Principal" element={<Principal />} />
+                        <Route path="/Tokenizar_Remate" element={<Registro/>} />
+                        <Route path="/" element={<Registro/>} />
                 </Routes>
                 </div>
           </div>
