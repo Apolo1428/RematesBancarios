@@ -1,69 +1,66 @@
 import React, { useState } from 'react';
-import EstadoPagos from './EstadoPagos';
-import ProgramarPago from './ProgramarPago';
 import Inicio from './Inicio';
 import '../App.css'
-import { FaHome } from 'react-icons/fa';
-import { FaCreditCard } from 'react-icons/fa';
-import { FaListUl} from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import Catalogo from './Catalogo'
+import Cuenta from './Cuenta'
+import Tokenizar from './Tokenizar'
+
+import { useNavigate, Route, Routes } from 'react-router-dom';
 
 const Principal = () => {
+    const [page,setPage] = useState('');
     const navigate = useNavigate();
-    const [selectedOption, setSelectedOption] = useState('Inicio');
 
-    const renderContent = () => {
-        switch (selectedOption) {
-            case 'Inicio':
+
+
+    const gotoPage = (caso) => {
+        switch (caso) {
+            case 'Inicio': 
                 return <Inicio/>
-            case 'Estado de pagos':
-                return <EstadoPagos />;
-            case 'Programar Token':
-                return <ProgramarPago />;
-            case 'Iniciar sesion':
-                navigate('/Ingreso');
+            case 'Catalogo': 
+                return <Catalogo/>
+            case 'Cuenta': 
+                return <Cuenta/>
+            case 'Tokenizar': 
+                return <Tokenizar/>
+            case 'Ingreso': 
+                navigate('/Ingreso')
             default:
-                return <Inicio />;
+                return <Inicio/>
         }
-    };
-    const navInicio = () => {
-        navigate('/Principal');
     }
     return (
-            <div>
+            <div className = 'Principal'>
             <div className = "navbar">
-                <div style = {{display: 'flex', justifyContent: "space-between", width: "100vw", cursor: 'pointer'}} onClick={navInicio}>
-                    <div style={{display: 'flex'}}>
+                <div style = {{display: 'flex', justifyContent: "space-between", width: "100vw"}}>
+                    <div style={{display: 'flex', cursor: 'pointer'}} onClick={() => setPage('Inicio')}>
                         <img src = {require("../logoRBT.png")} width = "50px" height = "50px" />
                         <h1>
                             REMATES BANCARIOS
                         </h1>
                     </div>
-                    <div>
                     <ul>
-                        <li onClick={() => setSelectedOption('Inicio')} style = {{display: 'flex'}}>
-                        </li>
-                        <li onClick={() => setSelectedOption('Estado de pagos')}>
+                        <li onClick={() => setPage('Catalogo')}>
                             <a>
-                            Estado de pagos
+                            Catalogo
                             </a>
                         </li>
-                        <li onClick={() => setSelectedOption('Programar Token')}>
+                        <li onClick={() => setPage('Tokenizar')}>
                             <a>
-                            Programar pago
+                            Tokenizar
                             </a>
                         </li>
-                        <li onClick={() => setSelectedOption('Iniciar sesion')}>
+                        <li onClick={() => setPage('Cuenta')}>
                             <a>
-                            Iniciar sesión
+                            Cuenta
                             </a>
                         </li>
                     </ul> 
-                    </div>
                 </div>
             </div> 
             <div className = "content" id = "contenedor">
-                {renderContent()}
+                {gotoPage(page)}
+
             </div>
             </div>
     )

@@ -20,7 +20,6 @@ const App = () => {
                         <Route path="/Ingreso" element={<Ingreso />} />
                         <Route path="/Registro" element={<Registro/>} />
                         <Route path="/Principal" element={<Principal />} />
-                        <Route path="/Tokenizar_Remate" element={<Registro/>} />
                         <Route path="/" element={<Registro/>} />
                 </Routes>
                 </div>

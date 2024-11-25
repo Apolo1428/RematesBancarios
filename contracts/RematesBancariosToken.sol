@@ -7,19 +7,23 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
 contract RematesBancariosToken is ERC20, Ownable {
-    uint256 public constant TOKEN_PRICE = 1 * 10 ** 18; // Precio de 1 USDC por token
-    uint256 public constant ANNUAL_YIELD = 15; // 15% de rendimiento anual.
-    uint256 public constant TOTAL_TOKENS = 2543 * 10 ** 18; // Número total de tokens: 2543
-
+    uint256 public TOKEN_PRICE; 
+    uint256 public ANNUAL_YIELD; 
+    uint256 public TOTAL_TOKENS;
     address public usdcTokenAddress =
-        0x5FbDB2315678afecb367f032d93F642f64180aa3; // Dirección de USDC proporcionada
+        0x5FbDB2315678afecb367f032d93F642f64180aa3; 
     mapping(address => uint256) public balances;
 
-    // Array para almacenar los inversores
     address[] public investors;
 
-    constructor() ERC20("RematesBancariosToken", "RBT") Ownable(msg.sender) {
-        //console.log(msg.sender);
+    constructor(
+        uint256 TOKEN_PRICE_,
+        uint256 ANUAL_YIELD_,
+        uint256 TOTAL_TOKENS_
+    ) ERC20("RematesBancariosToken", "RBT") Ownable(msg.sender) {
+        TOKEN_PRICE = TOKEN_PRICE_;
+        ANNUAL_YIELD = ANUAL_YIELD_;
+        TOTAL_TOKENS = TOTAL_TOKENS_;
         _mint(msg.sender, TOTAL_TOKENS);
     }
     function setUsdcTokenAddress(address _usdcTokenAddress) external onlyOwner {
