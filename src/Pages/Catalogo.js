@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CuadroCatalogo from '../Components/CuadroCatalogo'
 import { ethers } from "ethers";
 import { db } from '../firebase'; 
-import { query, updateDoc, collection, getDocs, where, doc } from "firebase/firestore";
+import { query, collection, getDocs,addDoc } from "firebase/firestore";
 import ABI from "../ContractsInfo/ABI.json";
 import BYTECODE from "../ContractsInfo/BYTECODE.json";
 import ABI_MOCK from "../ContractsInfo/ABI_MOCK.json";
@@ -18,6 +18,7 @@ const Catalogo = () => {
     const [nombreContrato, setNombreContrato] = useState('');
     const [costoContrato, setCostoContrato] = useState('');
     const [numeroContrato, setNumeroContrato] = useState('');
+    const [ownerContrato, setOwnerContrato] = useState('');
     const [rendContrato, setRendContrato] = useState('');
     const [dirContrato, setDirContrato] = useState('');
 
@@ -27,34 +28,50 @@ const Catalogo = () => {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
 
-        let num_ = Number(numeroContrato)*Number(costoContrato);
+        let num_ = Number(numComprar)*Number(costoContrato);
         
-        const MOCK_ADDRESS = "0xF904556F9c4902e17715d8CeFfe3CbdC86d0dFA8";
-        let mock_Token = new ethers.Contract(MOCK_ADDRESS, ABI_MOCK, signer);
-        await mock_Token.approve(dirContrato, ethers.parseUnits(num_.toString(),18));
-        console.log("Reservado");
+        try {
+            const contract = new ethers.Contract(dirContrato, ABI, signer);
+            await contract.buyTokens(ethers.parseUnits(numeroContrato.toString(),18));
+            await addDoc(collection(db, "MisRemates"), {
+                address: signer.address,
+                name: nombreContrato,
+                addressContract: dirContrato,
+                numTokens: numComprar,
+                yield: rendContrato,
+                owner: ownerContrato
+            });
 
+        }catch (error) {
+            console.error(error);
+            console.log(signer.address);
+            const MOCK_ADDRESS = "0x7570cC94d3ea389cE659DeC12d659356f253066A";
+            let mock_Token = new ethers.Contract(MOCK_ADDRESS, ABI_MOCK, signer);
+            await mock_Token.approve(dirContrato, ethers.parseUnits(num_.toString(),18));
+            console.log("Reservado");
+        }
+    }
 
-
-        const contract = new ethers.Contract(dirContrato, ABI, signer);
-        await contract.buyTokens(ethers.parseUnits(numeroContrato.toString(),18));
-
+    const setNumComprar2 = (value) => {
+        if (value <= Number(numeroContrato) && value >= 0){
+            setNumComprar(value); 
+        }
     }
     const renderComprar = () => {
         return (
             <div className = 'ComprarToken'>
-                <h4>Contrato {nombreContrato}</h4>
-                <p>Costo {costoContrato}</p>
-                <p>Numero {numeroContrato}</p>
-                <p>Yield {rendContrato}</p>
-                <p>Address {dirContrato}</p>
+                <h4>Contrato: {nombreContrato}</h4>
+                <p>Costo: {costoContrato}</p>
+                <p>Numero: {numeroContrato}</p>
+                <p>Rendimiento: {rendContrato}</p>
+                <p>Dirección de contrato: {dirContrato}</p>
 
                 <form onSubmit={ComprarToken} className='formCustom'>
                 <input
                     type="number"
                     placeholder="Numero de tokens a comprar"
                     value={numComprar}
-                    onChange={(e) => setNumComprar(e.target.value)}
+                    onChange={(e) => setNumComprar2(e.target.value)}
                     required
                     autoComplete='off'
                 />
@@ -73,6 +90,7 @@ const Catalogo = () => {
         setNumeroContrato(catalogo.number);
         setRendContrato(catalogo.yield);
         setDirContrato(catalogo.address);
+        setOwnerContrato(catalogo.owner);
     }
     
     const renderCatalogo = () => {
@@ -90,7 +108,7 @@ const Catalogo = () => {
         for (let i = 0; i < catalog.length % 4; i++) {
             rows.push(<div className = 'relleno'></div>);
         }
-        return <tbody>{rows}</tbody>
+        return <div className = 'tbody'>{rows}</div>
     }
     useEffect(() => {
         const fetchCatalogo = async () => {
@@ -102,7 +120,8 @@ const Catalogo = () => {
             number: doc.data().number,
             cost: doc.data().cost,
             yield: doc.data().yield,
-            address: doc.data().address
+            address: doc.data().address,
+            owner: doc.data().owner 
           }));
           setCatalog(catalogData); // Actualiza el estado con los datos
         };

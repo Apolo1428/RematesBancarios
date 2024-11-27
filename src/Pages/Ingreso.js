@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { db } from '../firebase'; 
+import { collection, query, where, getDocs } from 'firebase/firestore'; 
 
 const Ingreso = () => {
   const [username, setUsername] = useState('');
@@ -8,11 +10,24 @@ const Ingreso = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/Principal');
+    try {
+      const q = query(collection(db, "UsuariosRemates"), 
+      where("username", "==", username), 
+      where("password", "==", password))
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+          navigate('/Principal');
+      } else {
+          alert('Usuario o contraseña incorrectos');
+      }
+    } catch (error) {
+        alert('Error al iniciar sesión');
+        console.error("Error al iniciar sesión:", error);
+    }
   };
   const goToRegister = () => {
     navigate('/Registro');
-    };
+  };
   return (
     <div className='login-wrapper'>
         <img src = {require('../logoRBT.png')} style={{width:'150px', margin: '20px'}}></img>

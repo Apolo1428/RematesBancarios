@@ -215,7 +215,7 @@ input:hover{
 }
 
 .Catalogo {
-  tbody{
+  .tbody{
     padding: 0px 80px 0px 80px;
     display: flex;
     flex-wrap: wrap;
