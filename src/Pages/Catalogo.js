@@ -41,14 +41,21 @@ const Catalogo = () => {
                 yield: rendContrato,
                 owner: ownerContrato
             });
+            return;
 
         }catch (error) {
             console.error(error);
             console.log(signer.address);
+            try { 
             const MOCK_ADDRESS = "0x7570cC94d3ea389cE659DeC12d659356f253066A";
             let mock_Token = new ethers.Contract(MOCK_ADDRESS, ABI_MOCK, signer);
             await mock_Token.approve(dirContrato, ethers.parseUnits(num_.toString(),18));
             console.log("Reservado");
+            await ComprarToken();
+            }
+            catch (error) {
+                alert("No se pudo");
+            }
         }
     }
 
