@@ -58,6 +58,7 @@ const Cuenta = () => {
                 number = {catalog[i].number}
                 yield = {catalog[i].yield} 
                 address = {catalog[i].address}
+                cost = {catalog[i].cost}
                 onClick = {() => cobrar(catalog[i])}
             />);
         }

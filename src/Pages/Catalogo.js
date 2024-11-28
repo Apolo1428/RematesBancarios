@@ -40,8 +40,13 @@ const Catalogo = () => {
                 where("address", "==", signer.address),
                 where("addressContract", "==", dirContrato)
             );
-        
+            const contractQuery = query(
+                collection(db, "RematesBancarios"),
+                where("address", "==", dirContrato),
+            );
+
             const querySnapshot = await getDocs(userQuery);
+            const queryContracts = await getDocs(contractQuery);
         
             if (!querySnapshot.empty) {
                 // Si el documento ya existe, actualizar el campo "numTokens"
@@ -59,6 +64,14 @@ const Catalogo = () => {
                     numTokens: numComprar,
                     yield: rendContrato,
                     owner: ownerContrato,
+                    cost: costoContrato,
+                });
+            }
+            if (!queryContracts.empty) {
+                const existingDoc = queryContracts.docs[0];
+                const newNumTokens = Number(existingDoc.data().number) - Number(numComprar);
+                await updateDoc(doc(db, "RematesBancarios", existingDoc.id), {
+                    number: newNumTokens.toString(),
                 });
             }
 

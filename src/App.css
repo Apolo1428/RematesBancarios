@@ -257,7 +257,7 @@ input:hover{
     }
     p {
       line-height: 30px;
-      text-overflow: ellipsis;
+      text-overflow: clip;
       overflow: hidden;
     }
   }

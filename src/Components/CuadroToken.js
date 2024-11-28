@@ -10,6 +10,7 @@ const CuadroToken = (props) => {
             <p><b>Direccion Contrato</b> {props.address}</p>
             <p><b>Mi cantidad de RBT: </b>{props.number} RBT</p>
             <p><b>Rendimiento anual: </b>{props.yield}%</p>
+            <p><b>Costo RBT: </b>{props.cost} mUSDC</p>
         </div>
     );
 };
