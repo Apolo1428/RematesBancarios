@@ -32,18 +32,22 @@ const Catalogo = () => {
         let tokensbuy = ethers.parseUnits(numComprar,18);
         try {
             const contract = new ethers.Contract(dirContrato, ABI, signer);
-            await contract.connect(signer).setUsdcTokenAddress("0x7570cC94d3ea389cE659DeC12d659356f253066A");
-            /*await addDoc(collection(db, "MisRemates"), {
+            await contract.connect(signer).buyTokens(tokensbuy);
+            await addDoc(collection(db, "MisRemates"), {
                 address: signer.address,
                 name: nombreContrato,
                 addressContract: dirContrato,
                 numTokens: numComprar,
                 yield: rendContrato,
                 owner: ownerContrato
-            });*/
+            });
             return;
         }catch (error) {
-           console.error(error);
+           if (error.reason === 'USDC allowance too low'){
+            const mockContract= new ethers.Contract('0x7570cC94d3ea389cE659DeC12d659356f253066A', ABI_MOCK, signer);
+            await  mockContract.approve(dirContrato, ethers.parseUnits(num_.toString(),18));
+
+           }
            
         }
     }
