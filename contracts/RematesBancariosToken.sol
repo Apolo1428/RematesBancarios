@@ -11,7 +11,7 @@ contract RematesBancariosToken is ERC20, Ownable {
     uint256 public ANNUAL_YIELD; 
     uint256 public TOTAL_TOKENS;
     address public usdcTokenAddress =
-        0x5FbDB2315678afecb367f032d93F642f64180aa3; 
+        0x7570cC94d3ea389cE659DeC12d659356f253066A; 
     mapping(address => uint256) public balances;
 
     address[] public investors;

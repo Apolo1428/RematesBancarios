@@ -29,33 +29,22 @@ const Catalogo = () => {
         const signer = await provider.getSigner();
 
         let num_ = Number(numComprar)*Number(costoContrato);
-        
+        let tokensbuy = ethers.parseUnits(numComprar,18);
         try {
             const contract = new ethers.Contract(dirContrato, ABI, signer);
-            await contract.buyTokens(ethers.parseUnits(numeroContrato.toString(),18));
-            await addDoc(collection(db, "MisRemates"), {
+            await contract.connect(signer).setUsdcTokenAddress("0x7570cC94d3ea389cE659DeC12d659356f253066A");
+            /*await addDoc(collection(db, "MisRemates"), {
                 address: signer.address,
                 name: nombreContrato,
                 addressContract: dirContrato,
                 numTokens: numComprar,
                 yield: rendContrato,
                 owner: ownerContrato
-            });
+            });*/
             return;
-
         }catch (error) {
-            console.error(error);
-            console.log(signer.address);
-            try { 
-            const MOCK_ADDRESS = "0x7570cC94d3ea389cE659DeC12d659356f253066A";
-            let mock_Token = new ethers.Contract(MOCK_ADDRESS, ABI_MOCK, signer);
-            await mock_Token.approve(dirContrato, ethers.parseUnits(num_.toString(),18));
-            console.log("Reservado");
-            await ComprarToken();
-            }
-            catch (error) {
-                alert("No se pudo");
-            }
+           console.error(error);
+           
         }
     }
 
