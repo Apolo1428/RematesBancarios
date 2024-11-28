@@ -187,8 +187,21 @@ input:hover{
 }
 
 .ComprarToken{
-  p {
+  ul{
+    list-style-type: square;
+  }
+  li {
     line-height: 40px;
+    font-size: 18px;
+    
+  }
+  h4{
+    margin-top: 20px;
+  }
+}
+.Tokenizar {
+  h4{
+    margin-top: 50px;
   }
 }
 .Tokenizar, .ComprarToken {
@@ -196,7 +209,6 @@ input:hover{
 
   h4{
     color: rgb(237, 237, 237);
-    margin-top: 60px;
     margin-bottom: 30px;
     font-size: 26px;
     text-align: center;
@@ -214,7 +226,7 @@ input:hover{
   }
 }
 
-.Catalogo {
+.Catalogo, .Cuenta {
   .tbody{
     padding: 0px 80px 0px 80px;
     display: flex;
@@ -225,22 +237,53 @@ input:hover{
   }
   .cuadroCatalogo{
     background-color: rgb(0, 36, 59);
-    padding: 15px 50px 30px 50px;
+    padding: 30px 50px 30px 50px;
     border-radius: 20px;
     box-shadow: 0px 0px 20px 5px rgba(2, 204, 214, 0.5);
     margin-bottom: 30px;
     cursor: pointer;
     min-width: 200px;
+    max-width: 200px;
+    overflow: hidden;
     h2 {
-      line-height: 50px;
+      width: 180px;
+      height: 30px;
+      text-overflow: ellipsis ellipsis;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: -webkit-linear-gradient(left, #00d0ff, #470ce9, #b926f8c3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     p {
       line-height: 30px;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
   }
   .relleno{
     min-width: 300px;
+    max-width: 300px;
   }
+}
+.infoCuenta{
+  margin-top: 20px;
+  margin-left: 80px;
+  h3{
+    font-size: 30px;
+    line-height: 60px;
+  }
+  p{
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+.atras{
+  width:60px;
+  height:60px;
+  padding: 0;
+  margin-left: 30px;
+  margin-top: 10px;
 }
 
 label {
